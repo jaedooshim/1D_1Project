@@ -11,5 +11,51 @@ datasource db {
 }
 
 model Member {
-  id String @id @default(uuid())
+  id          String    @id @default(uuid())
+  email       String    @db.VarChar()
+  password    String    @db.VarChar()
+  name        String    @db.VarChar()
+  phoneNumber String    @map("phone_num") @db.VarChar()
+  address     String    @db.VarChar()
+  subAddress  String    @map("sub_address") @db.VarChar()
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime? @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+  Publishs    Publish[]
+  Comments    Comment[]
+}
+
+model Publish {
+  id          Int       @id @default(autoincrement())
+  memberId    String    @map("member_id")
+  title       String    @db.VarChar()
+  description String    @map("desc") @db.VarChar()
+  createdAt   DateTime  @default(now()) @map("creatd_at")
+  updatedAt   DateTime? @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+  Comments    Comment[]
+  Member      Member    @relation(fields: [memberId], references: [id])
+  Tag         Tag       @relation(fields: [tagId], references: [id])
+  tagId       Int
+}
+
+model Tag {
+  id        Int       @id @default(autoincrement())
+  name      String    @map("tag_name") @db.VarChar()
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  Publish   Publish[]
+}
+
+model Comment {
+  id        Int       @id @default(autoincrement())
+  memberId  String    @map("member_id")
+  publishId Int       @map("publish_id")
+  content   String    @db.VarChar()
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  Member    Member    @relation(fields: [memberId], references: [id])
+  Publish   Publish   @relation(fields: [publishId], references: [id])
 }
