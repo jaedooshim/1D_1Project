@@ -1,73 +1,65 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 1Day-1Project
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## BackEnd - 심재두
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## #프로젝트 소개
+- 1D-1Project : 하루에 3~4개의 테이블로 구성하여 사이드 프로젝트를 진행
+<br>
+- 멤버/게시글/태그/댓글 로 구성되어 있으며 bcrypt,jwt 모듈을 만들어 OOP 형식으로 적용 및
+<br>
+멤버의 커스텀데코레이터, 가드를 만들어 적용
+- 하나의 멤버는 여러개의 게시글을 작성할 수 있으며 게시글에 맞는 태그를 설정할 수 있다.
+<br>
+그리고 각 게시글에 해당하는 댓글을 작성할 수 있다.
 
-## Description
+## Rest API
+| Content   | Method   | Path                                    |
+|-----------|----------|-----------------------------------------|
+| 멤버생성      | `POST`   | /members                                |
+| 멤버수정      | `PUT`    | /members/:memberId                      |
+| 멤버 비밀번호수정 | `PATCH`  | /members/:memberId/password             |
+| 멤버조회      | `GET`    | /members/:memberId                      |
+| 멤버 목록조회   | `GET`    | /members                                |
+| 멤버삭제      | `DELETE` | /members/:memberId                      |
+| 게시글 생성    | `POST`   | /publish                                |
+| 게시글 수정    | `PUT`    | /publish/:publishId                     |
+| 게시글 삭제    | `PUT`    | /publish/:publishId                     |
+| 게시글 조회    | `GET`    | /publish/:publishId                     |
+| 게시글 목록조회  | `GET`    | /publish                                |
+| 태그생성      | `POST`   | /publish/tags                           |
+| 태그수정      | `PATCH`  | /publish/tags/:tagId                    |
+| 태그삭제      | `DELETE` | /publish/tags/:tagId                    |
+| 태그조회      | `GET`    | /publish/tags/:tagId                    |
+| 태그 목록조회   | `GET`    | /publish/tags                           |
+| 댓글생성      | `POST`   | /publish/comments                       |
+| 댓글수정      | `PATCH`  | /publish/:publishId/comments/:commentId |
+| 댓글삭제      | `DELETE` | /publish/:publishId/comments/:commentId |
+| 댓글조회      | `GET`    | /publish/:publishId/comments/:commentId |
+| 댓글 목록조회   | `GET`    | /publish/comments                       |
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+### 사용기술
+
+- TypeScript
+- NestJs
+- Prisma
+- PostgreSQL
+- Docker
+
+
+
+### Server Use
 
 ```bash
-$ npm install
+npm run start:dev
 ```
 
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+### Install
+```angular2html
+npm i | npm install
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+### Docker PostgreServer Port
+```angular2html
+5432:5432
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
